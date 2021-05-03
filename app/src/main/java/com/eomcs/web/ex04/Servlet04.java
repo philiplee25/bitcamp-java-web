@@ -67,9 +67,7 @@ public class Servlet04 extends GenericServlet {
     // 멀티파트 데이터를 처리할 때는 다음의 인코딩 설정이 적용되지 않는다.
     // req.setCharacterEncoding("UTF-8");
     //
-    // getParameter()가 null을 리턴한다는 것을 확인하기 위해
-    // 파라미터 모두 String으로 받는다.
-    // => 멀티파트 형식으로 전송된 데이터는 getParameter()로 꺼낼 수 없다.
+    // 멀티파트 형식으로 전송된 데이터는 getParameter()로 꺼낼 수 없다.
     //
     // String age = req.getParameter("age");
     // String name = req.getParameter("name");
@@ -89,17 +87,23 @@ public class Servlet04 extends GenericServlet {
     // - 이클립스 IDE에서 프로젝트 정보를 갱신한다.
     // 2) Apache commons-fileupload 문서에 따라 코딩한다.
     /// *
-    // => 멀티파트 데이터를 분석하여 FileItem 객체에 담아 줄 공장을 준비한다.
+    // DiskFilteItemFactory
+    // => 각 파트 데이터를 분석하여 FileItem 객체에 담아주는 일을 한다.
+    // => ServletFileUpload 객체의 일을 도와준다.
     DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 
-    // => 공장 객체를 사용하여 클라이언트가 보낸 데이터를 처리할 객체 준비
+    // ServletFileUpload
+    // => 클라이언트가 보낸 멀티 파트형식의 데이터를 분석하는 일을 한다.
+    // => 생성자에 주입된 FileItemFactory 객체를 사용하여
+    //    각 파트의 데이터를 사용하기 좋게 FileItem 객체로 만든다.
     ServletFileUpload multipartDataHandler = new ServletFileUpload(fileItemFactory);
 
     // => 분석한 데이터를 보관할 맵 객체를 준비한다.
     HashMap<String, String> paramMap = new HashMap<>();
 
     try {
-      // => 멀티파트 데이터 처리기를 이용하여 클라이언트 요청을 분석하기
+      // parseRequest()
+      // => 클라이언트가 보낸 멀티 파트 데이터를 읽어서 FileItem 객체 배열로 뽑아내는 일을 한다.
       List<FileItem> parts = multipartDataHandler.parseRequest((HttpServletRequest) req);
 
       for (FileItem part : parts) {
