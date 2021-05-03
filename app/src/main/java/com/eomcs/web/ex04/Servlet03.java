@@ -121,6 +121,7 @@ public class Servlet03 extends GenericServlet {
 // Content-Disposition: form-data; name="photo"; filename="actors.jpg"
 // Content-Type: image/jpeg
 //
-// ...
+// 바이너리데이터...
+// ------WebKitFormBoundaryT1G23U6fYMK0zZxx-
 
 

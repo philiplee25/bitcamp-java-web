@@ -16,9 +16,13 @@ import javax.servlet.annotation.WebServlet;
 //      metadata-complete="false"
 //    속성의 값은 false 여야 한다.
 //
-@WebServlet("/ex01/s04")
+//@WebServlet("/ex01/s04")
+//@WebServlet(value="/ex01/s04")
+//@WebServlet(urlPatterns="/ex01/s04")
+//@WebServlet(urlPatterns={"/ex01/s04"})
+@WebServlet(urlPatterns={"/ex01/s04","/ex01/hoho","/hoho2"})
 public class Servlet04 extends GenericServlet {
-  
+
   private static final long serialVersionUID = 1L;
 
   @Override
