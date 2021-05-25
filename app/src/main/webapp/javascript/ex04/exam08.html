@@ -22,7 +22,9 @@ var obj = {
 	aver: () => this.sum() / 3,
 	test1: function() {console.log(this);},
 	test2() {console.log(this);},
+	// function의 this는 소속된 객체를 가리킨다
 	test3: () => console.log(this)
+	// arrow function 의 this는 window 객체를 가리킨다
 }; 
 
 //console.log(obj.sum()); // this 즉 window 객체에 kor, eng, math라는 변수가 없기 때문에 
