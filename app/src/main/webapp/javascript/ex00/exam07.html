@@ -33,12 +33,13 @@ tag1.onclick = function() {
   var arr = JSON.parse(xhr.responseText);
   
   var trList = "";
-  for (var item of arr) {
+  for (var item of arr) { // 자바에서는 = for (b : boards) {
     trList += "<tr><td>" + item.no + "</td>" +
               "<td>" + item.title + "</td>" +
               "<td>" + item.viewCount + "</td>" +
               "<td>" + item.createdDate + "</td></tr>\n";
   }
+  console.log(trList); // HTML 텍스트
   
   var tag2 = document.querySelector("#ta1 > tbody");
   tag2.innerHTML = trList;
