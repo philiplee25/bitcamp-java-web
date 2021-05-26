@@ -12,12 +12,12 @@
 // {} 표기법을 이용하여 객체 생성과 초기화를 수행한다.  
 function createScore(name, kor, eng, math) {
     return {
-        "name": name,
+        "name": name, // 오른쪽은 위에서 받은 파라미터 값
         'kor': kor,
         'eng': eng,
         math: math,
         sum() { 
-            return this.kor + this.eng + this.math
+            return this.kor + this.eng + this.math // 위에서 왼쪽의 이름
         },
         aver() { 
             return this.sum() / 3
